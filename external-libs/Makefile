@@ -12,7 +12,7 @@
 
 all: bittube
 
-bittube: toolchain libsodium openssl boost bittube_dl openssl_sysroot
+bittube: toolchain libsodium openssl boost monero_dl openssl_sysroot
 	script/bittube-build.sh
 
 monero_dl:
