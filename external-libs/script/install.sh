@@ -4,8 +4,8 @@
 
 set -e
 
-packages=(boost openssl monero libsodium)
-archs=(arm arm64)
+packages=(boost openssl bittube libsodium)
+archs=(arm arm64 x86 x86_64)
 
 for arch in ${archs[@]}; do
     case ${arch} in
@@ -33,7 +33,7 @@ for arch in ${archs[@]}; do
 		rm -f $OUTPUT_DIR/*.a
 		cp -a $INPUT_DIR/$arch/lib/*.a $OUTPUT_DIR
 
-		if [ $package = "monero" ]; then
+		if [ $package = "bittube" ]; then
 			rm -rf $OUTPUT_DIR/../../include
 		  cp -a $INPUT_DIR/include $OUTPUT_DIR/../..
 		fi

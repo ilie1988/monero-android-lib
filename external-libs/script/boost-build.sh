@@ -34,3 +34,17 @@ if [ ! -d "$TARGET_DIR/arm64" ]; then
       install
   ln -sf ../include $TARGET_DIR/arm64
 fi
+
+if [ ! -d "$TARGET_DIR/x86" ]; then
+  PATH=$NDK_TOOL_DIR/x86/i686-linux-androideabi/bin:$NDK_TOOL_DIR/x86/bin:$PATH \
+      ./b2 --build-dir=android-x86 --prefix=$TARGET_DIR/x86 $args \
+      install
+  ln -sf ../include $TARGET_DIR/x86
+fi
+
+if [ ! -d "$TARGET_DIR/x86_64" ]; then
+  PATH=$NDK_TOOL_DIR/x86_64/x86_64-linux-androideabi/bin:$NDK_TOOL_DIR/x86_64/bin:$PATH \
+      ./b2 --build-dir=android-x86_64 --prefix=$TARGET_DIR/x86_64 $args \
+      install
+  ln -sf ../include $TARGET_DIR/x86_64
+fi

@@ -10,14 +10,14 @@
 
 #build-external-libs: clean-external-libs collect
 
-all: monero
+all: bittube
 
-monero: toolchain libsodium openssl boost monero_dl openssl_sysroot
-	script/monero-build.sh
+bittube: toolchain libsodium openssl boost bittube_dl openssl_sysroot
+	script/bittube-build.sh
 
 monero_dl:
-	script/monero-fetch.sh
-#	script/monero-patch.sh
+	script/bittube-fetch.sh
+#	script/bittube-patch.sh
 
 toolchain:
 	script/toolchain-build.sh
@@ -51,11 +51,11 @@ clean:
 	script/clean.sh
 
 distclean: clean
-	find monero    -type f -a ! -name ".gitignore" -a ! -name "wallet2_api.h" -exec rm {} \;
+	find bittube    -type f -a ! -name ".gitignore" -a ! -name "wallet2_api.h" -exec rm {} \;
 	find boost     -type f -a ! -name ".gitignore" -exec rm {} \;
 	find libsodium -type f -a ! -name ".gitignore" -exec rm {} \;
 	find openssl   -type f -a ! -name ".gitignore" -exec rm {} \;
 
-archive: libsodium openssl boost monero
+archive: libsodium openssl boost bittube
 	echo "Packing external-libs"
-	tar czfv libsodium openssl boost monero external-libs.tgz
+	tar czfv libsodium openssl boost bittube external-libs.tgz

@@ -4,7 +4,7 @@ set -e
 
 source script/env.sh
 
-cd $EXTERNAL_LIBS_BUILD_ROOT/monero
+cd $EXTERNAL_LIBS_BUILD_ROOT/bittube
 
 orig_path=$PATH
 base_dir=`pwd`
@@ -34,7 +34,7 @@ for arch in ${archs[@]}; do
         "x86")
             target_host=i686-linux-android
             xarch="i686"
-            sixtyfour=OFF
+           sixtyfour=OFF
             ;;
         "x86_64")
             target_host=x86_64-linux-android
@@ -46,7 +46,7 @@ for arch in ${archs[@]}; do
             ;;
     esac
 
-    TARGET_LIB_DIR=$lib_root/monero/$arch/lib
+    TARGET_LIB_DIR=$lib_root/bittube/$arch/lib
     if [ -f "$TARGET_LIB_DIR/libwallet_api.a" ]; then
       continue
     fi
@@ -90,7 +90,7 @@ for arch in ${archs[@]}; do
     mkdir -p $TARGET_LIB_DIR
     cp $OUTPUT_DIR/lib/*.a $TARGET_LIB_DIR
 
-    TARGET_INC_DIR=$lib_root/monero/include
+    TARGET_INC_DIR=$lib_root/bittube/include
     rm -rf $TARGET_INC_DIR
     mkdir -p $TARGET_INC_DIR
     cp -a $base_dir/src/wallet/api/wallet2_api.h $TARGET_INC_DIR
